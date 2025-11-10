@@ -2,6 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+  <!-- WICHTIG für Handy-Größe -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Foodpicker 🍽️</title>
   <style>
     * {
@@ -29,7 +31,7 @@
       color: var(--text-main);
       background: #020617;
       overflow: hidden;
-      padding: 16px;
+      padding: 12px;
     }
 
     /* animierter Farbnebel im Hintergrund */
@@ -69,7 +71,7 @@
           transparent 1px
         );
       background-size: 40px 40px;
-      opacity: 0.4;
+      opacity: 0.35;
       pointer-events: none;
       animation: gridMove 35s linear infinite;
       z-index: 0;
@@ -178,6 +180,12 @@
       z-index: 2;
     }
 
+    @media (max-width: 600px) {
+      .app {
+        max-width: 420px;
+      }
+    }
+
     /* EPISCHES INTRO */
     .intro {
       position: fixed;
@@ -199,9 +207,9 @@
 
     .intro-inner {
       text-align: center;
-      max-width: 420px;
-      padding: 28px 22px;
-      border-radius: 28px;
+      width: min(420px, 100% - 32px);
+      padding: 24px 20px;
+      border-radius: 24px;
       background: radial-gradient(circle at top left, rgba(79,70,229,0.4), transparent 55%),
                   rgba(15,23,42,0.95);
       box-shadow:
@@ -268,7 +276,7 @@
     }
 
     .intro-title {
-      font-size: 24px;
+      font-size: 22px;
       margin-bottom: 8px;
     }
 
@@ -334,16 +342,25 @@
 
     .card {
       position: relative;
+      width: min(520px, 100%);
+      margin-inline: auto;
       background: radial-gradient(circle at top left, rgba(148,163,255,0.28), transparent 55%),
                   radial-gradient(circle at bottom right, rgba(248,113,191,0.25), transparent 55%),
                   rgba(15,23,42,0.9);
-      border-radius: 28px;
-      padding: 26px 22px 22px;
+      border-radius: 26px;
+      padding: 22px 18px 18px;
       box-shadow:
         0 26px 70px rgba(15, 23, 42, 0.95),
         0 0 0 1px rgba(148, 163, 184, 0.45);
       backdrop-filter: blur(18px);
       overflow: hidden;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        border-radius: 22px;
+        padding: 18px 14px 14px;
+      }
     }
 
     .card::before {
@@ -374,7 +391,7 @@
     }
 
     h1 {
-      font-size: 26px;
+      font-size: 24px;
       text-align: center;
       margin-bottom: 4px;
       letter-spacing: 0.09em;
@@ -454,7 +471,7 @@
 
     .button-wrapper {
       position: relative;
-      margin: 18px 0 20px;
+      margin: 16px 0 18px;
     }
 
     .button-glow {
@@ -474,8 +491,8 @@
       position: relative;
       border: none;
       border-radius: 999px;
-      padding: 16px 22px;
-      font-size: 16px;
+      padding: 14px 20px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       background: linear-gradient(135deg, #6366f1, #ec4899);
@@ -575,8 +592,8 @@
     .result-box {
       background: radial-gradient(circle at top left, rgba(15,23,42,0.1), transparent 55%),
                   rgba(15,23,42,0.9);
-      border-radius: 22px;
-      padding: 16px 15px 14px;
+      border-radius: 20px;
+      padding: 14px 12px 12px;
       border: 1px solid rgba(148,163,184,0.4);
     }
 
@@ -589,15 +606,15 @@
     }
 
     #result {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     #hint {
       font-size: 12px;
       color: var(--text-muted);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .image-wrapper {
