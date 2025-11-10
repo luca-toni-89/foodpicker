@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <!-- WICHTIG für Handy-Größe -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Foodpicker 🍽️</title>
   <style>
@@ -114,14 +113,14 @@
       100% { transform: translate3d(-10px,-60px,0); opacity: 0.1; }
     }
 
-    /* schwebende Food-Emojis – jetzt wilder unterwegs */
+    /* schwebende Food-Emojis – viele & wild */
     .floating-icons {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.38;
+      opacity: 0.42;
       font-size: 30px;
-      z-index: 0;
+      z-index: 1;
     }
 
     .floating-icon {
@@ -131,12 +130,23 @@
       transform-origin: center;
     }
 
-    .floating-icon:nth-child(1) { top: 10%; left: 5%;  animation-delay: 0s; }
-    .floating-icon:nth-child(2) { top: 80%; left: 10%; animation-delay: 4s; }
-    .floating-icon:nth-child(3) { top: 15%; right: 8%; animation-delay: 8s; }
-    .floating-icon:nth-child(4) { top: 75%; right: 12%;animation-delay: 12s; }
-    .floating-icon:nth-child(5) { top: 40%; left: 45%; animation-delay: 16s; }
-    .floating-icon:nth-child(6) { top: 30%; left: 70%; animation-delay: 20s; }
+    /* Positionen für viele Icons */
+    .floating-icon:nth-child(1)  { top: 6%;  left: 6%;  animation-delay: 0s; }
+    .floating-icon:nth-child(2)  { top: 12%; left: 50%; animation-delay: 3s; }
+    .floating-icon:nth-child(3)  { top: 18%; right: 4%; animation-delay: 6s; }
+    .floating-icon:nth-child(4)  { top: 28%; left: 15%; animation-delay: 9s; }
+    .floating-icon:nth-child(5)  { top: 32%; right: 18%;animation-delay: 12s; }
+    .floating-icon:nth-child(6)  { top: 42%; left: 45%; animation-delay: 15s; }
+    .floating-icon:nth-child(7)  { top: 52%; left: 8%;  animation-delay: 18s; }
+    .floating-icon:nth-child(8)  { top: 58%; right: 10%;animation-delay: 21s; }
+    .floating-icon:nth-child(9)  { top: 68%; left: 30%; animation-delay: 24s; }
+    .floating-icon:nth-child(10) { top: 74%; right: 26%;animation-delay: 27s; }
+    .floating-icon:nth-child(11) { top: 82%; left: 12%; animation-delay: 30s; }
+    .floating-icon:nth-child(12) { top: 86%; right: 8%; animation-delay: 33s; }
+    .floating-icon:nth-child(13) { top: 22%; left: 70%; animation-delay: 36s; }
+    .floating-icon:nth-child(14) { top: 48%; right: 45%;animation-delay: 39s; }
+    .floating-icon:nth-child(15) { top: 64%; left: 55%; animation-delay: 42s; }
+    .floating-icon:nth-child(16) { top: 8%;  right: 30%;animation-delay: 45s; }
 
     @keyframes floatIcon {
       0% {
@@ -173,6 +183,12 @@
       }
     }
 
+    /* Icons innerhalb des Intros etwas dezenter */
+    .intro .floating-icons {
+      opacity: 0.32;
+      z-index: 1;
+    }
+
     .app {
       width: 100%;
       max-width: 520px;
@@ -197,6 +213,7 @@
       background: radial-gradient(circle at top, rgba(15,23,42,0.96), rgba(15,23,42,0.98));
       color: var(--text-main);
       transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      overflow: hidden;
     }
 
     .intro-hidden {
@@ -218,6 +235,7 @@
       backdrop-filter: blur(18px);
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     .intro-inner::before {
@@ -244,7 +262,7 @@
 
     .intro-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .intro-badge {
@@ -781,6 +799,7 @@
     <span class="particle"></span>
   </div>
 
+  <!-- globale Floating Icons -->
   <div class="floating-icons">
     <div class="floating-icon">🍣</div>
     <div class="floating-icon">🍔</div>
@@ -788,9 +807,19 @@
     <div class="floating-icon">🌮</div>
     <div class="floating-icon">🍝</div>
     <div class="floating-icon">🍟</div>
+    <div class="floating-icon">🍕</div>
+    <div class="floating-icon">🍜</div>
+    <div class="floating-icon">🍱</div>
+    <div class="floating-icon">🍛</div>
+    <div class="floating-icon">🥙</div>
+    <div class="floating-icon">🌯</div>
+    <div class="floating-icon">🍣</div>
+    <div class="floating-icon">🍤</div>
+    <div class="floating-icon">🥐</div>
+    <div class="floating-icon">🍰</div>
   </div>
 
-  <!-- CHEF GIF OVERLAY (bei "Was soll ich heute essen?") -->
+  <!-- CHEF GIF OVERLAY -->
   <div class="chef-overlay">
     <img
       id="chefEmoji"
@@ -800,7 +829,7 @@
     />
   </div>
 
-  <!-- READY GIF OVERLAY (bei "Ich bin ready 🍕") -->
+  <!-- READY GIF OVERLAY -->
   <div class="ready-overlay">
     <img
       id="readyGif"
@@ -810,11 +839,31 @@
     />
   </div>
 
-  <!-- SOUND: hier deine Datei / URL eintragen -->
+  <!-- SOUND -->
   <audio id="yumSound" src="sounds/yum.mp3"></audio>
 
   <!-- EPISCHES INTRO -->
   <div id="intro" class="intro">
+    <!-- Floating Icons auch im Intro -->
+    <div class="floating-icons">
+      <div class="floating-icon">🍣</div>
+      <div class="floating-icon">🍔</div>
+      <div class="floating-icon">🥗</div>
+      <div class="floating-icon">🌮</div>
+      <div class="floating-icon">🍝</div>
+      <div class="floating-icon">🍟</div>
+      <div class="floating-icon">🍕</div>
+      <div class="floating-icon">🍜</div>
+      <div class="floating-icon">🍱</div>
+      <div class="floating-icon">🍛</div>
+      <div class="floating-icon">🥙</div>
+      <div class="floating-icon">🌯</div>
+      <div class="floating-icon">🍣</div>
+      <div class="floating-icon">🍤</div>
+      <div class="floating-icon">🥐</div>
+      <div class="floating-icon">🍰</div>
+    </div>
+
     <div class="intro-inner">
       <div class="intro-content">
         <div class="intro-badge">
@@ -824,7 +873,7 @@
         <div class="intro-emoji">🤖🍽️</div>
         <div class="intro-title">Bist du ready für eine Entscheidung?</div>
         <div class="intro-sub">
-          Ein Klick – und dein Essen steht fest. Kein Grübeln, nur Genuss.
+          Ein Klick – und euer Essen steht fest. Kein Grübeln, nur Genuss.
         </div>
         <button id="startBtn">Ich bin ready 🍕</button>
       </div>
@@ -860,8 +909,8 @@
 
           <div class="result-box">
             <div class="result-title">Auswahl</div>
-            <div id="result">Klick auf den Button, Luca 😋</div>
-            <div id="hint">Deine Gerichte sind fix hinterlegt. Kein Denken nötig.</div>
+            <div id="result">Klick auf den Button, Babe 😘</div>
+            <div id="hint">Eure Gerichte sind fix hinterlegt. Kein Denken nötig.</div>
 
             <div class="image-wrapper visible" id="imageWrapper">
               <img
@@ -883,23 +932,22 @@
   <script>
     // ---- Daten: Name + Bild (kannst du easy ersetzen) ----
     const foods = [
-      { name: "Mischgemüse ohne Bohnen",    image: "images/mischgemuese-ohne-bohnen.jpg" },
-      { name: "Safranrisotto",              image: "images/safranrisotto.jpg" },
-      { name: "Bolognese vorkochen",        image: "images/bolognese-vorkochen.jpg" },
-      { name: "Kartoffelstock ohne Milch",  image: "images/kartoffelstock-ohne-milch.jpg" },
-      { name: "Rösti",                      image: "images/roesti.jpg" },
-      { name: "Frittata",                   image: "images/frittata.jpg" },
-      { name: "Reis mit Curry",             image: "images/reis-mit-curry.jpg" },
-      { name: "Ghackets mit Hörnli",        image: "images/ghackets-mit-hoernli.jpg" },
-      { name: "Tenz Momos",                 image: "images/tenz-momos.jpg" },
-      { name: "Aufschnitt",                 image: "images/aufschnitt.jpg" },
-      { name: "Chicken Nuggets",            image: "images/chicken-nuggets.jpg" },
-      { name: "Angus Burger",               image: "images/angus-burger.jpg" },
-      { name: "Poulet mit Kartoffeln",      image: "images/poulet-mit-kartoffeln.jpg" },
-      { name: "Fajitas",                    image: "images/fajitas.jpg" }
+      { name: "Mischgemüse ohne Bohnen",    image: "https://rb.gy/hrbmqx" },
+      { name: "Safranrisotto",              image: "https://thomassixt.de/wp-content/uploads/2018/06/safranrisotto.jpg" },
+      { name: "Bolognese",                  image: "https://images.arla.com/recordid/BB387A9D-55A5-4E43-98B6EB61CF940EEA/auberginen-bolognese.jpg?width=1269&height=715&mode=crop&format=webp" },
+      { name: "Kartoffelstock ohne Milch",  image: "https://cdn.gutekueche.de/media/recipe/26132/conv/kartoffelstock-default.jpg" },
+      { name: "Rösti",                      image: "https://api.swissmilk.ch/wp-content/uploads/2024/10/SM2024_DIVE_74_Roesti.jpg" },
+      { name: "Frittata",                   image: "https://eat.de/wp-content/uploads/2025/02/air-fryer-frittata-0069.jpg" },
+      { name: "Reis mit Curry",             image: "https://www.einfachmalene.de/wp-content/uploads/2024/02/Vegetarisches-Curry-mit-Ananas-und-Pfirsich_3012.jpg" },
+      { name: "Ghackets mit Hörnli",        image: "https://reisehappen.de/wp-content/uploads/2023/09/Ghackets-2.jpg" },
+      { name: "Tenz Momos",                 image: "https://www.schnellerteller.ch/images/restaurants/tenz-momo/header_image.jpg" },
+      { name: "Aufschnitt",                 image: "https://salumipasini.com/wp-content/uploads/2025/06/slider-storie-di-salumi.jpg" },
+      { name: "Chicken Nuggets",            image: "https://www.tastybits.de/wp-content/uploads/2022/10/chicken-nuggets-rezept_r.jpg" },
+      { name: "Angus Burger",               image: "https://storage.googleapis.com/luma-du-shop-production/original_images/LUMA-rezept-wagyu-burger-001.jpg" },
+      { name: "Poulet mit Kartoffeln",      image: "https://www.kikkoman.ch/fileadmin/_processed_/c/e/csm_1462-recipe-page-Potato-fondant-with-chicken-Mobile-Header_74cf2913fb.webp" },
+      { name: "Fajitas",                    image: "https://www.culinarycafe.com/images/fajitas-56a5c2803df78cf77289c87c.jpg" }
     ];
 
-    // Fallback-Bild, falls deine eigenen noch nicht da sind
     const FALLBACK_IMG =
       "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800";
 
@@ -933,7 +981,7 @@
 
     function triggerEmojiBurst() {
       emojiBurst.classList.remove("show");
-      void emojiBurst.offsetWidth; // reflow
+      void emojiBurst.offsetWidth;
       emojiBurst.classList.add("show");
     }
 
@@ -977,7 +1025,6 @@
       }, 700);
     }
 
-    // extra Keyframes für JS-animiertes Gesicht
     const style = document.createElement("style");
     style.innerHTML = `
       @keyframes faceHappy {
@@ -998,7 +1045,7 @@
         yumSound.currentTime = 0;
         yumSound.play();
       } catch (e) {
-        // Browser blockt evtl. Autoplay -> dann halt ohne Sound
+        // falls Autoplay blockiert wird: einfach still weiter
       }
     }
 
