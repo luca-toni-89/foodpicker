@@ -112,12 +112,12 @@
       100% { transform: translate3d(-10px,-60px,0); opacity: 0.1; }
     }
 
-    /* schwebende Food-Emojis */
+    /* schwebende Food-Emojis – jetzt wilder unterwegs */
     .floating-icons {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.38;
       font-size: 30px;
       z-index: 0;
     }
@@ -125,21 +125,33 @@
     .floating-icon {
       position: absolute;
       filter: drop-shadow(0 0 14px rgba(255,255,255,0.5));
-      animation: floatIcon 18s ease-in-out infinite alternate;
+      animation: floatIcon 26s ease-in-out infinite;
       transform-origin: center;
     }
 
-    .floating-icon:nth-child(1) { top: 6%;  left: 10%; animation-duration: 19s; animation-delay: 0s; }
-    .floating-icon:nth-child(2) { top: 75%; left: 8%;  animation-duration: 23s; animation-delay: 2s; }
-    .floating-icon:nth-child(3) { top: 18%; right: 8%; animation-duration: 20s; animation-delay: 4s; }
-    .floating-icon:nth-child(4) { top: 78%; right: 14%;animation-duration: 24s; animation-delay: 6s; }
-    .floating-icon:nth-child(5) { top: 45%; left: 45%; animation-duration: 26s; animation-delay: 8s; }
-    .floating-icon:nth-child(6) { top: 30%; left: 70%; animation-duration: 22s; animation-delay: 10s; }
+    .floating-icon:nth-child(1) { top: 10%; left: 5%;  animation-delay: 0s; }
+    .floating-icon:nth-child(2) { top: 80%; left: 10%; animation-delay: 4s; }
+    .floating-icon:nth-child(3) { top: 15%; right: 8%; animation-delay: 8s; }
+    .floating-icon:nth-child(4) { top: 75%; right: 12%;animation-delay: 12s; }
+    .floating-icon:nth-child(5) { top: 40%; left: 45%; animation-delay: 16s; }
+    .floating-icon:nth-child(6) { top: 30%; left: 70%; animation-delay: 20s; }
 
     @keyframes floatIcon {
-      0%   { transform: translate3d(0,0,0) scale(1); }
-      50%  { transform: translate3d(10px,-14px,0) scale(1.1); }
-      100% { transform: translate3d(-12px,10px,0) scale(0.95); }
+      0% {
+        transform: translate3d(0,0,0) scale(1) rotate(0deg);
+      }
+      25% {
+        transform: translate3d(15vw,-10vh,0) scale(1.15) rotate(40deg);
+      }
+      50% {
+        transform: translate3d(-10vw,15vh,0) scale(0.95) rotate(-30deg);
+      }
+      75% {
+        transform: translate3d(20vw,5vh,0) scale(1.1) rotate(25deg);
+      }
+      100% {
+        transform: translate3d(0,0,0) scale(1) rotate(0deg);
+      }
     }
 
     /* Whirl-Animation beim Klick */
@@ -730,6 +742,9 @@
     />
   </div>
 
+  <!-- SOUND: hier deine Datei / URL eintragen -->
+  <audio id="yumSound" src="sounds/yum.mp3"></audio>
+
   <!-- EPISCHES INTRO -->
   <div id="intro" class="intro">
     <div class="intro-inner">
@@ -801,7 +816,7 @@
     // ---- Daten: Name + Bild (kannst du easy ersetzen) ----
     const foods = [
       { name: "Mischgemüse ohne Bohnen",    image: "images/mischgemuese-ohne-bohnen.jpg" },
-      { name: "Safranrisotto",              image: "https://thomassixt.de/wp-content/uploads/2018/06/safranrisotto.jpg.webp" },
+      { name: "Safranrisotto",              image: "images/safranrisotto.jpg" },
       { name: "Bolognese vorkochen",        image: "images/bolognese-vorkochen.jpg" },
       { name: "Kartoffelstock ohne Milch",  image: "images/kartoffelstock-ohne-milch.jpg" },
       { name: "Rösti",                      image: "images/roesti.jpg" },
@@ -833,6 +848,7 @@
     const moodFace        = document.getElementById("moodFace");
     const chefEmoji       = document.getElementById("chefEmoji");
     const floatingIcons   = document.querySelectorAll(".floating-icon");
+    const yumSound        = document.getElementById("yumSound");
 
     // Intro -> Foodpicker einblenden
     startBtn.addEventListener("click", () => {
@@ -896,6 +912,16 @@
     `;
     document.head.appendChild(style);
 
+    function playYumSound() {
+      if (!yumSound) return;
+      try {
+        yumSound.currentTime = 0;
+        yumSound.play();
+      } catch (e) {
+        // Browser blockt evtl. Autoplay -> dann halt ohne Sound
+      }
+    }
+
     function setFood(choice) {
       resultEl.textContent = "Heute gibt’s: " + choice.name + " 🤤";
       hintEl.textContent = "Nicht sicher? – Einfach nochmals klicken.";
@@ -905,6 +931,7 @@
       triggerEmojiBurst();
       showChef();
       whirlIcons();
+      playYumSound();
 
       imageWrapperEl.classList.remove("visible");
 
