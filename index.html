@@ -710,6 +710,47 @@
         transform: scale(0.8) translateY(-40px);
       }
     }
+
+    /* READY GIF OVERLAY für "Ich bin ready 🍕" */
+    .ready-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .ready-gif {
+      width: 260px;
+      max-width: 70vw;
+      opacity: 0;
+      transform: scale(0.4);
+    }
+
+    .ready-gif.show {
+      animation: readyPop 1.2s ease-out forwards;
+    }
+
+    @keyframes readyPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.4) translateY(20px);
+      }
+      30% {
+        opacity: 1;
+        transform: scale(1.2) translateY(0);
+      }
+      70% {
+        opacity: 1;
+        transform: scale(1.0) translateY(-6px);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-32px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -732,13 +773,23 @@
     <div class="floating-icon">🍟</div>
   </div>
 
-  <!-- CHEF GIF OVERLAY -->
+  <!-- CHEF GIF OVERLAY (bei "Was soll ich heute essen?") -->
   <div class="chef-overlay">
     <img
       id="chefEmoji"
       class="chef-emoji"
       src="https://i.pinimg.com/originals/dd/da/21/ddda21c77dd758aa14c8b395d8dcbfa3.gif"
       alt="Chef Emoji"
+    />
+  </div>
+
+  <!-- READY GIF OVERLAY (bei "Ich bin ready 🍕") -->
+  <div class="ready-overlay">
+    <img
+      id="readyGif"
+      class="ready-gif"
+      src="https://i.pinimg.com/originals/79/1c/39/791c3923f0782dcaf8396f7f2fa00b0d.gif"
+      alt="Ready GIF"
     />
   </div>
 
@@ -847,11 +898,13 @@
     const imageLabelText  = document.getElementById("imageLabelText");
     const moodFace        = document.getElementById("moodFace");
     const chefEmoji       = document.getElementById("chefEmoji");
+    const readyGif        = document.getElementById("readyGif");
     const floatingIcons   = document.querySelectorAll(".floating-icon");
     const yumSound        = document.getElementById("yumSound");
 
-    // Intro -> Foodpicker einblenden
+    // Intro -> Foodpicker einblenden + Ready-GIF zeigen
     startBtn.addEventListener("click", () => {
+      showReadyGif();
       intro.classList.add("intro-hidden");
       cardContainer.classList.add("visible");
     });
@@ -874,6 +927,16 @@
       setTimeout(() => {
         chefEmoji.classList.remove("show");
       }, 1300);
+    }
+
+    function showReadyGif() {
+      if (!readyGif) return;
+      readyGif.classList.remove("show");
+      void readyGif.offsetWidth;
+      readyGif.classList.add("show");
+      setTimeout(() => {
+        readyGif.classList.remove("show");
+      }, 1200);
     }
 
     function animateFace() {
