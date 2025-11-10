@@ -130,6 +130,15 @@
       transform-origin: center;
     }
 
+    /* inneres Emoji, das beim Klick rotiert */
+    .floating-symbol {
+      display: inline-block;
+    }
+
+    .floating-symbol.spin {
+      animation: iconWhirl 0.7s ease-out;
+    }
+
     /* Positionen für viele Icons */
     .floating-icon:nth-child(1)  { top: 6%;  left: 6%;  animation-delay: 0s; }
     .floating-icon:nth-child(2)  { top: 12%; left: 50%; animation-delay: 3s; }
@@ -166,21 +175,11 @@
       }
     }
 
-    /* Whirl-Animation beim Klick */
-    .floating-icon.whirl {
-      animation: iconWhirl 0.7s ease-out;
-    }
-
+    /* nur das Emoji (innerer Span) dreht kurz durch */
     @keyframes iconWhirl {
-      0% {
-        transform: translate3d(0,0,0) scale(1) rotate(0deg);
-      }
-      40% {
-        transform: translate3d(0,-20px,0) scale(1.4) rotate(360deg);
-      }
-      100% {
-        transform: translate3d(0,0,0) scale(1) rotate(720deg);
-      }
+      0%   { transform: scale(1) rotate(0deg); }
+      40%  { transform: scale(1.4) rotate(360deg); }
+      100% { transform: scale(1) rotate(720deg); }
     }
 
     /* Icons innerhalb des Intros etwas dezenter */
@@ -695,14 +694,14 @@
       text-overflow: ellipsis;
     }
 
-    /* CHEF GIF OVERLAY – jetzt weiter unten */
+    /* CHEF GIF OVERLAY – weiter unten */
     .chef-overlay {
       position: fixed;
       inset: 0;
       display: flex;
-      align-items: flex-end;   /* nach unten */
+      align-items: flex-end;
       justify-content: center;
-      padding-bottom: 16vh;    /* Abstand vom unteren Rand */
+      padding-bottom: 16vh;
       pointer-events: none;
       z-index: 4;
     }
@@ -792,22 +791,22 @@
 
   <!-- globale Floating Icons -->
   <div class="floating-icons">
-    <div class="floating-icon">🍣</div>
-    <div class="floating-icon">🍔</div>
-    <div class="floating-icon">🥗</div>
-    <div class="floating-icon">🌮</div>
-    <div class="floating-icon">🍝</div>
-    <div class="floating-icon">🍟</div>
-    <div class="floating-icon">🍕</div>
-    <div class="floating-icon">🍜</div>
-    <div class="floating-icon">🍱</div>
-    <div class="floating-icon">🍛</div>
-    <div class="floating-icon">🥙</div>
-    <div class="floating-icon">🌯</div>
-    <div class="floating-icon">🍣</div>
-    <div class="floating-icon">🍤</div>
-    <div class="floating-icon">🥐</div>
-    <div class="floating-icon">🍰</div>
+    <div class="floating-icon"><span class="floating-symbol">🍣</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍔</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🥗</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🌮</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍝</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍟</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍕</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍜</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍱</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍛</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🥙</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🌯</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍣</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍤</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🥐</span></div>
+    <div class="floating-icon"><span class="floating-symbol">🍰</span></div>
   </div>
 
   <!-- CHEF GIF OVERLAY -->
@@ -837,22 +836,22 @@
   <div id="intro" class="intro">
     <!-- Floating Icons auch im Intro -->
     <div class="floating-icons">
-      <div class="floating-icon">🍣</div>
-      <div class="floating-icon">🍔</div>
-      <div class="floating-icon">🥗</div>
-      <div class="floating-icon">🌮</div>
-      <div class="floating-icon">🍝</div>
-      <div class="floating-icon">🍟</div>
-      <div class="floating-icon">🍕</div>
-      <div class="floating-icon">🍜</div>
-      <div class="floating-icon">🍱</div>
-      <div class="floating-icon">🍛</div>
-      <div class="floating-icon">🥙</div>
-      <div class="floating-icon">🌯</div>
-      <div class="floating-icon">🍣</div>
-      <div class="floating-icon">🍤</div>
-      <div class="floating-icon">🥐</div>
-      <div class="floating-icon">🍰</div>
+      <div class="floating-icon"><span class="floating-symbol">🍣</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍔</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🥗</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🌮</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍝</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍟</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍕</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍜</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍱</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍛</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🥙</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🌯</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍣</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍤</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🥐</span></div>
+      <div class="floating-icon"><span class="floating-symbol">🍰</span></div>
     </div>
 
     <div class="intro-inner">
@@ -907,7 +906,7 @@
               <img
                 id="resultImage"
                 alt="Essen Bild"
-                src="https://media.tenor.com/25qYRNW8SmQAAAAj/question-mark-question.gif"
+                src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800"
               />
               <div class="image-label">
                 <span class="name" id="imageLabelText">Noch nichts ausgewählt</span>
@@ -920,7 +919,7 @@
   </div>
 
   <script>
-    // ---- Daten: Name + Bild (kannst du easy ersetzen) ----
+    // ---- Daten: Name + Bild ----
     const foods = [
       { name: "Mischgemüse ohne Bohnen",    image: "https://rb.gy/hrbmqx" },
       { name: "Safranrisotto",              image: "https://thomassixt.de/wp-content/uploads/2018/06/safranrisotto.jpg" },
@@ -954,8 +953,10 @@
     const moodFace        = document.getElementById("moodFace");
     const chefEmoji       = document.getElementById("chefEmoji");
     const readyGif        = document.getElementById("readyGif");
-    const floatingIcons   = document.querySelectorAll(".floating-icon");
     const yumSound        = document.getElementById("yumSound");
+
+    // alle inneren Emoji-Spans (globale + Intro-Icons)
+    const floatingSymbols = document.querySelectorAll(".floating-symbol");
 
     // Intro -> Foodpicker einblenden + Ready-GIF zeigen
     startBtn.addEventListener("click", () => {
@@ -1005,13 +1006,13 @@
     }
 
     function whirlIcons() {
-      floatingIcons.forEach(icon => {
-        icon.classList.remove("whirl");
-        void icon.offsetWidth;
-        icon.classList.add("whirl");
+      floatingSymbols.forEach(sym => {
+        sym.classList.remove("spin");
+        void sym.offsetWidth;
+        sym.classList.add("spin");
       });
       setTimeout(() => {
-        floatingIcons.forEach(icon => icon.classList.remove("whirl"));
+        floatingSymbols.forEach(sym => sym.classList.remove("spin"));
       }, 700);
     }
 
