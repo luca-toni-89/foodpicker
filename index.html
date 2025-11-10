@@ -689,29 +689,20 @@
     }
 
     .image-label span.name {
-      max-width: 210px;
+      max-width: 230px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .image-chip {
-      font-size: 9px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: rgba(55,65,81,0.9);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    /* CHEF GIF OVERLAY – groß & episch */
+    /* CHEF GIF OVERLAY – jetzt weiter unten */
     .chef-overlay {
       position: fixed;
       inset: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-end;   /* nach unten */
       justify-content: center;
+      padding-bottom: 16vh;    /* Abstand vom unteren Rand */
       pointer-events: none;
       z-index: 4;
     }
@@ -916,10 +907,9 @@
               <img
                 id="resultImage"
                 alt="Essen Bild"
-                src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://media.tenor.com/25qYRNW8SmQAAAAj/question-mark-question.gif"
               />
               <div class="image-label">
-                <span class="image-chip">Heute</span>
                 <span class="name" id="imageLabelText">Noch nichts ausgewählt</span>
               </div>
             </div>
